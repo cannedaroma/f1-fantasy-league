@@ -3,6 +3,20 @@
 <head>
     <title>F1 Fantasy League Hub</title>
     <style>
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+        
         body {
             font-family: Arial;
             max-width: 800px;
@@ -39,96 +53,58 @@
     </p>
 </div>
 
-<!-- Next Race Section -->
-<div class="box">
-    <h2>
-        Next Race 
-        <span id="countdown" style="font-size: 0.8em; color: #d00000; font-weight: bold;"></span>
-    </h2>
+<div class="main-grid">
 
-    <p><strong>Australian Grand Prix – March 3–5</strong></p>
+    <!-- LEFT COLUMN -->
+    <div>
+        <!-- Next Race Section -->
+        <div class="box">
+            <h2>
+                Next Race 
+                <span id="countdown" style="font-size: 0.8em; color: #d00000; font-weight: bold;"></span>
+            </h2>
 
-    <img src="melbourne-2026.jpeg" 
-     alt="BWT Alpine F1 Team 2026 Australian GP poster"
-     style="width:100%; max-width:600px; border-radius:8px; margin-top:10px;">
+            <p><strong>Australian Grand Prix – March 3–5</strong></p>
 
-    <p style="font-size: 0.8em; margin-top: 8px; color: #555;">
-        Poster credit: © BWT Alpine F1 Team – 2026 Australian Grand Prix promotional artwork.
-    </p>
-</div>
-    
-<!-- Weekly Summary Section -->
-<div class="box">
-    <h2>Weekly Summary</h2>
-    <p>
-        It's race week! Welcome to the 2026 Formula 1 season. If you're new here, check out the 
-        <a href="https://www.f1.cool/blog/338" target="_blank">Shift+F1 podcast Preseason Primer episode</a>, 
-        which assumes no prior F1 knowledge and is a great way to get to know the sport.
-    </p>
-    <p>
-        We're racing down under this week in Melbourne, Australia! There has been a big overhaul to the F1 technical regulations — 
-        the rules the teams use to build their cars from scratch. Here's a great article that explains the changes in detail: 
-        <a href="https://www.thetimes.com/sport/formula-one/article/f1-rule-changes-2026-regulations-explained-cars-3d-9lnj70dh5?gaa_at=eafs&gaa_n=AWEtsqdcVuyHJfi99mX5CJoihgMfERBs4o_-Y8okmigwlDQ1_ZJfY-XBKHOXfEnCM7g%3D&gaa_ts=69a7011b&gaa_sig=rBYLfbDK5myxPuXEQINlPrinLdPQDjpiVgJJ542eTf4Kex4WjWKRF0zSgcFpJDpiHrliM9uR_sEKT3v7sXIXsQ%3D%3D" target="_blank">F1 2026 regulations explained (The Times)</a>.
-    </p>
-</div>
+            <img src="melbourne-2026.jpeg" 
+                 alt="BWT Alpine F1 Team 2026 Australian GP poster"
+                 style="width:100%; max-width:400px; border-radius:8px; margin-top:10px;">
 
-<!-- League Standings Section -->
-<div class="box">
-    <h2>League Standings</h2>
-    <ol>
-        <li>Bear Essentials – 0 pts</li>
-        <li>Delta Krass – 0 pts</li>
-        <li>Delta Love – 0 pts</li>
-        <li>Here I Go! – 0 pts</li>
-        <li>Hold on! – 0 pts</li>
-        <li>Fast Car Go Michael Team – 0 pts</li>
-        <li>Fast Cars w/ Good Drivers – 0 pts</li>
-        <li>KachowStickers24 – 0 pts</li>
-        <li>KatAttack-Fast & Furriest – 0 pts</li>
-        <li>The Maxtrix 5 – 0 pts</li>
-        <li>TowMater's Crew – 0 pts</li>
-    </ol>
-</div>
+            <p style="font-size: 0.8em; margin-top: 8px; color: #555;">
+                Poster credit: © BWT Alpine F1 Team – 2026 Australian Grand Prix promotional artwork.
+            </p>
+        </div>
+    </div>
 
-<!-- Driver Standings Section -->
-<div class="box">
-    <h2>Driver Standings</h2>
-    <p>Lando Norris – 0 pts</p>
-    <p>Oscar Piastri – 0 pts</p>
-    <p>Max Verstappen – 0 pts</p>
-    <p>Isack Hadjar – 0 pts</p>
-    <p>Lewis Hamilton – 0 pts</p>
-    <p>Charles Leclerc – 0 pts</p>
-    <p>George Russell – 0 pts</p>
-    <p>Kimi Antonelli – 0 pts</p>
-    <p>Carlos Sainz – 0 pts</p>
-    <p>Alexander Albon – 0 pts</p>
-    <p>Liam Lawson – 0 pts</p>
-    <p>Arvid Lindblad – 0 pts</p>
-    <p>Fernando Alonso – 0 pts</p>
-    <p>Lance Stroll – 0 pts</p>
-    <p>Esteban Ocon – 0 pts</p>
-    <p>Oliver Bearman – 0 pts</p>
-    <p>Nico Hülkenberg – 0 pts</p>
-    <p>Gabriel Bortoleto – 0 pts</p>
-    <p>Pierre Gasly – 0 pts</p>
-    <p>Franco Colapinto – 0 pts</p>
-</div>
+    <!-- RIGHT COLUMN -->
+    <div>
 
-<!-- Constructor Standings Section -->
-<div class="box">
-    <h2>Constructor Standings</h2>
-    <p>McLaren – 0 pts</p>
-    <p>Mercedes – 0 pts</p>
-    <p>Red Bull – 0 pts</p>
-    <p>Ferrari – 0 pts</p>
-    <p>Williams – 0 pts</p>
-    <p>Racing Bulls – 0 pts</p>
-    <p>Aston Martin – 0 pts</p>
-    <p>Haas – 0 pts</p>
-    <p>Audi – 0 pts</p>
-    <p>Alpine – 0 pts</p>
-    <p>Cadillac – 0 pts</p>
+        <!-- Weekly Summary -->
+        <div class="box">
+            <h2>Weekly Summary</h2>
+            <p>It's race week! Welcome to the 2026 Formula 1 season...</p>
+        </div>
+
+        <!-- League Standings -->
+        <div class="box">
+            <h2>League Standings</h2>
+            <!-- your list here -->
+        </div>
+
+        <!-- Driver Standings -->
+        <div class="box">
+            <h2>Driver Standings</h2>
+            <!-- your driver list here -->
+        </div>
+
+        <!-- Constructor Standings -->
+        <div class="box">
+            <h2>Constructor Standings</h2>
+            <!-- your constructor list here -->
+        </div>
+
+    </div>
+
 </div>
     
 <script>
