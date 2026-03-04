@@ -33,6 +33,48 @@
             margin-bottom: 20px;
             border-radius: 8px;
         }
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+th, td {
+    padding: 6px 8px;
+    text-align: left;
+}
+
+th {
+    border-bottom: 2px solid #ddd;
+}
+
+tr:not(:last-child) td {
+    border-bottom: 1px solid #eee;
+}
+
+.leader {
+    background-color: #fff3cd;
+    font-weight: bold;
+}
+
+/* Team Color Bar */
+.team-color {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    margin-right: 6px;
+    border-radius: 2px;
+}
+
+/* Constructor Logos */
+.constructor-logo {
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+        
     </style>
 </head>
 <body>
@@ -64,6 +106,30 @@
                 <span id="countdown" style="font-size: 0.8em; color: #d00000; font-weight: bold;"></span>
             </h2>
 
+<script>
+function highlightLeader(tableId) {
+    const table = document.getElementById(tableId);
+    const rows = table.querySelectorAll("tbody tr");
+
+    let maxPoints = -1;
+    let leaderRow = null;
+
+    rows.forEach(row => {
+        const points = parseInt(row.cells[row.cells.length - 1].innerText);
+        if (points > maxPoints) {
+            maxPoints = points;
+            leaderRow = row;
+        }
+    });
+
+    rows.forEach(row => row.classList.remove("leader"));
+    if (leaderRow) leaderRow.classList.add("leader");
+}
+
+highlightLeader("driverTable");
+highlightLeader("constructorTable");
+</script>
+            
             <p><strong>Australian Grand Prix – March 3–5</strong></p>
 
             <img src="melbourne-2026.jpeg" 
@@ -112,30 +178,51 @@
         </ol>
     </div>
 
-    <!-- Driver Standings -->
-    <div class="box">
-        <h2>Driver Standings</h2>
-        <p>Lando Norris (McLaren) – 0 pts</p>
-        <p>Oscar Piastri (McLaren) – 0 pts</p>
-        <p>Max Verstappen (Red Bull) – 0 pts</p>
-        <p>Isack Hadjar (Racing Bulls) – 0 pts</p>
-        <p>Lewis Hamilton (Ferrari) – 0 pts</p>
-        <p>Charles Leclerc (Ferrari) – 0 pts</p>
-        <p>George Russell (Mercedes) – 0 pts</p>
-        <p>Kimi Antonelli (Mercedes) – 0 pts</p>
-        <p>Carlos Sainz (Williams) – 0 pts</p>
-        <p>Alexander Albon (Williams) – 0 pts</p>
-        <p>Liam Lawson (Red Bull) – 0 pts</p>
-        <p>Arvid Lindblad (Racing Bulls) – 0 pts</p>
-        <p>Fernando Alonso (Aston Martin) – 0 pts</p>
-        <p>Lance Stroll (Aston Martin) – 0 pts</p>
-        <p>Esteban Ocon (Haas) – 0 pts</p>
-        <p>Oliver Bearman (Haas) – 0 pts</p>
-        <p>Nico Hülkenberg (Audi) – 0 pts</p>
-        <p>Gabriel Bortoleto (Audi) – 0 pts</p>
-        <p>Pierre Gasly (Alpine) – 0 pts</p>
-        <p>Franco Colapinto (Alpine) – 0 pts</p>
-    </div>
+  <div class="box">
+    <h2>Driver Standings</h2>
+    <table id="driverTable">
+        <thead>
+            <tr>
+                <th>Driver</th>
+                <th>Team</th>
+                <th>Pts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="team-color" style="background:#ff8000;"></span>Lando Norris</td>
+                <td>McLaren</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td><span class="team-color" style="background:#ff8000;"></span>Oscar Piastri</td>
+                <td>McLaren</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td><span class="team-color" style="background:#1e41ff;"></span>Max Verstappen</td>
+                <td>Red Bull</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td><span class="team-color" style="background:#dc0000;"></span>Lewis Hamilton</td>
+                <td>Ferrari</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td><span class="team-color" style="background:#dc0000;"></span>Charles Leclerc</td>
+                <td>Ferrari</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td><span class="team-color" style="background:#00d2be;"></span>George Russell</td>
+                <td>Mercedes</td>
+                <td>0</td>
+            </tr>
+            <!-- Add remaining drivers same pattern -->
+        </tbody>
+    </table>
+</div>
 
     <!-- Constructor Standings -->
     <div class="box">
