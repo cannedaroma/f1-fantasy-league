@@ -5,78 +5,72 @@
 
 <style>
 .main-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-align-items:start;
-}
-
-@media(max-width:768px){
-.main-grid{
-grid-template-columns:1fr;
-}
+  display: grid;
+  grid-template-columns: 1fr; /* Force single column */
+  gap: 20px;
+  align-items: start;
 }
 
 body{
-font-family:Arial;
-max-width:800px;
-margin:auto;
-padding:20px;
-background-color:#f4f4f4;
+  font-family: Arial;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f4f4f4;
 }
 
 h1,h2{
-color:#d00000;
+  color: #d00000;
 }
 
 .box{
-background:white;
-padding:15px;
-margin-bottom:20px;
-border-radius:8px;
+  background: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 table{
-width:100%;
-border-collapse:collapse;
-font-size:0.95em;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
-border-radius:6px;
-overflow:hidden;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 th,td{
-padding:8px 10px;
-text-align:left;
+  padding: 8px 10px;
+  text-align: left;
 }
 
 th{
-border-bottom:2px solid #ddd;
-background:#f8f8f8;
+  border-bottom: 2px solid #ddd;
+  background: #f8f8f8;
 }
 
 tr:not(:last-child) td{
-border-bottom:1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
 
 .team-color{
-display:inline-block;
-width:12px;
-height:16px;
-margin-right:8px;
-border-radius:3px;
-vertical-align:middle;
+  display: inline-block;
+  width: 12px;
+  height: 16px;
+  margin-right: 8px;
+  border-radius: 3px;
+  vertical-align: middle;
 }
 
 tbody tr:hover{
-background:#f1f1f1;
-transition:background 0.2s;
+  background: #f1f1f1;
+  transition: background 0.2s;
 }
 
 button{
-padding:8px 16px;
-font-weight:bold;
-cursor:pointer;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -98,9 +92,6 @@ Join the League Now
 </div>
 
 <div class="main-grid">
-
-<!-- LEFT COLUMN -->
-<div>
 
 <div class="box">
 <h2>
@@ -158,79 +149,72 @@ Poster credit: © BWT Alpine F1 Team – 2026 Australian GP artwork
 </div>
 </div>
 
-<!-- RIGHT COLUMN -->
-<div>
+<div class="box">
+<h2>Weekly Summary</h2>
+<p>
+It's race week! Welcome to the 2026 Formula 1 season. If you're new here, check out the
+<a href="https://www.f1.cool/blog/338" target="_blank">Shift+F1 podcast Preseason Primer episode</a>,
+which assumes no prior F1 knowledge.
+</p>
+<p>
+We're racing down under this week in Melbourne, Australia! There has been a big overhaul to the F1 technical regulations —
+the rules the teams use to build their cars from scratch. Here's a great article that explains the changes in detail:
+<a href="https://www.thetimes.com/sport/formula-one/article/f1-rule-changes-2026-regulations-explained-cars-3d-9lnj70dh5" target="_blank">
+F1 2026 regulations explained (The Times)
+</a>.
+</p>
+</div>
 
-  <!-- Weekly Summary -->
-  <div class="box">
-    <h2>Weekly Summary</h2>
-    <p>
-      It's race week! Welcome to the 2026 Formula 1 season. If you're new here, check out the
-      <a href="https://www.f1.cool/blog/338" target="_blank">Shift+F1 podcast Preseason Primer episode</a>,
-      which assumes no prior F1 knowledge.
-    </p>
-    <p>
-      We're racing down under this week in Melbourne, Australia! There has been a big overhaul to the F1 technical regulations —
-      the rules the teams use to build their cars from scratch. Here's a great article that explains the changes in detail:
-      <a href="https://www.thetimes.com/sport/formula-one/article/f1-rule-changes-2026-regulations-explained-cars-3d-9lnj70dh5" target="_blank">
-        F1 2026 regulations explained (The Times)
-      </a>.
-    </p>
-  </div>
-  
-  <!-- Fantasy League Standings -->
-  <div class="box">
-    <h2>League Standings</h2>
-    <ol>
-      <li>Bear Essentials – 0 pts</li>
-      <li>Delta Krass – 0 pts</li>
-      <li>Delta Love – 0 pts</li>
-      <li>Here I Go! – 0 pts</li>
-      <li>Hold on! – 0 pts</li>
-      <li>Fast Car Go Michael Team – 0 pts</li>
-      <li>Fast Cars w/ Good Drivers – 0 pts</li>
-      <li>KachowStickers24 – 0 pts</li>
-      <li>KatAttack-Fast & Furriest – 0 pts</li>
-      <li>The Maxtrix 5 – 0 pts</li>
-      <li>TowMater's Crew – 0 pts</li>
-    </ol>
-  </div>
+<div class="box">
+<h2>League Standings</h2>
+<ol>
+  <li>Bear Essentials – 0 pts</li>
+  <li>Delta Krass – 0 pts</li>
+  <li>Delta Love – 0 pts</li>
+  <li>Here I Go! – 0 pts</li>
+  <li>Hold on! – 0 pts</li>
+  <li>Fast Car Go Michael Team – 0 pts</li>
+  <li>Fast Cars w/ Good Drivers – 0 pts</li>
+  <li>KachowStickers24 – 0 pts</li>
+  <li>KatAttack-Fast & Furriest – 0 pts</li>
+  <li>The Maxtrix 5 – 0 pts</li>
+  <li>TowMater's Crew – 0 pts</li>
+</ol>
+</div>
 
-  <!-- League Statistics -->
-  <div class="box">
-    <h2>League Statistics</h2>
-    <p><strong>Top Driver:</strong> <span id="topDriver">TBD</span></p>
-    <p><strong>Top Constructor:</strong> <span id="topConstructor">TBD</span></p>
-    <p><strong>Total Points Scored:</strong> <span id="totalPoints">0</span></p>
-    <p><strong>Best Teammate Gap:</strong> <span id="teammateGap">TBD</span></p>
-    <p><strong>Most Balanced Team:</strong> <span id="balancedTeam">TBD</span></p>
-  </div>
-  
-  <!-- Constructor Standings -->
-  <div class="box">
-    <h2>Constructor Standings</h2>
-    <table id="constructorTable">
-      <thead>
-        <tr>
-          <th>Team</th>
-          <th>Pts</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr data-team="McLaren"><td><span class="team-color" style="background:#ff8000;"></span>McLaren</td><td>0</td></tr>
-        <tr data-team="Ferrari"><td><span class="team-color" style="background:#dc0000;"></span>Ferrari</td><td>0</td></tr>
-        <tr data-team="Red Bull"><td><span class="team-color" style="background:#1e41ff;"></span>Red Bull</td><td>0</td></tr>
-        <tr data-team="Mercedes"><td><span class="team-color" style="background:#00d2be;"></span>Mercedes</td><td>0</td></tr>
-        <tr data-team="Williams"><td><span class="team-color" style="background:#ffbf00;"></span>Williams</td><td>0</td></tr>
-        <tr data-team="Racing Bulls"><td><span class="team-color" style="background:#ff4500;"></span>Racing Bulls</td><td>0</td></tr>
-        <tr data-team="Aston Martin"><td><span class="team-color" style="background:#006f62;"></span>Aston Martin</td><td>0</td></tr>
-        <tr data-team="Haas"><td><span class="team-color" style="background:#bd0e0e;"></span>Haas</td><td>0</td></tr>
-        <tr data-team="Audi"><td><span class="team-color" style="background:#00b5e2;"></span>Audi</td><td>0</td></tr>
-        <tr data-team="Alpine"><td><span class="team-color" style="background:#0090ff;"></span>Alpine</td><td>0</td></tr>
-        <tr data-team="Cadillac"><td><span class="team-color" style="background:#808080;"></span>Cadillac</td><td>0</td></tr>
-      </tbody>
-    </table>
-  </div>
+<div class="box">
+<h2>League Statistics</h2>
+<p><strong>Top Driver:</strong> <span id="topDriver">TBD</span></p>
+<p><strong>Top Constructor:</strong> <span id="topConstructor">TBD</span></p>
+<p><strong>Total Points Scored:</strong> <span id="totalPoints">0</span></p>
+<p><strong>Best Teammate Gap:</strong> <span id="teammateGap">TBD</span></p>
+<p><strong>Most Balanced Team:</strong> <span id="balancedTeam">TBD</span></p>
+</div>
+
+<div class="box">
+<h2>Constructor Standings</h2>
+<table id="constructorTable">
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>Pts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-team="McLaren"><td><span class="team-color" style="background:#ff8000;"></span>McLaren</td><td>0</td></tr>
+    <tr data-team="Ferrari"><td><span class="team-color" style="background:#dc0000;"></span>Ferrari</td><td>0</td></tr>
+    <tr data-team="Red Bull"><td><span class="team-color" style="background:#1e41ff;"></span>Red Bull</td><td>0</td></tr>
+    <tr data-team="Mercedes"><td><span class="team-color" style="background:#00d2be;"></span>Mercedes</td><td>0</td></tr>
+    <tr data-team="Williams"><td><span class="team-color" style="background:#ffbf00;"></span>Williams</td><td>0</td></tr>
+    <tr data-team="Racing Bulls"><td><span class="team-color" style="background:#ff4500;"></span>Racing Bulls</td><td>0</td></tr>
+    <tr data-team="Aston Martin"><td><span class="team-color" style="background:#006f62;"></span>Aston Martin</td><td>0</td></tr>
+    <tr data-team="Haas"><td><span class="team-color" style="background:#bd0e0e;"></span>Haas</td><td>0</td></tr>
+    <tr data-team="Audi"><td><span class="team-color" style="background:#00b5e2;"></span>Audi</td><td>0</td></tr>
+    <tr data-team="Alpine"><td><span class="team-color" style="background:#0090ff;"></span>Alpine</td><td>0</td></tr>
+    <tr data-team="Cadillac"><td><span class="team-color" style="background:#808080;"></span>Cadillac</td><td>0</td></tr>
+  </tbody>
+</table>
+</div>
 
 </div>
 
