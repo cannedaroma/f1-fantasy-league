@@ -320,27 +320,7 @@
     calculateStats();
 }
 
-        // Calculate constructor points
-        const constructorPoints = {};
-        drivers.forEach(row=>{
-            const team = row.dataset.team;
-            const pts = parseInt(row.cells[3].innerText);
-            constructorPoints[team] = (constructorPoints[team]||0)+pts;
-        });
-
-        // Sort and update constructor table
-        const constructorTable = document.getElementById("constructorTable").tBodies[0];
-        const constructors = Array.from(constructorTable.rows);
-        constructors.sort((a,b)=>{
-            return (constructorPoints[b.cells[0].innerText]||0)-(constructorPoints[a.cells[0].innerText]||0);
-        }).forEach(row=>{
-            const team = row.cells[0].innerText;
-            row.cells[1].innerText = constructorPoints[team]||0;
-            constructorTable.appendChild(row);
-        });
-    }
-
-// Teammate gap
+        /// Teammate gap
 const teamDrivers = {};
 
 for (let row of driverRows) {
