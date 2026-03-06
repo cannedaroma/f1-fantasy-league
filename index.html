@@ -737,6 +737,9 @@ async function updateConstructorTable(url) {
   const tbody = document.querySelector("#constructorTable tbody");
   tbody.innerHTML = "";
 
+  // Sort by points (Column B, index 1 in array) descending
+  data.sort((a, b) => parseInt(b[1]) - parseInt(a[1]));
+
   data.forEach(row => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
