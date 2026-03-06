@@ -159,6 +159,9 @@ tbody tr:hover{
       <p><strong>Australian Grand Prix – March 3–5</strong></p>
     </div>
 
+    <p><strong>Australian Grand Prix – March 3–5</strong></p>
+<p id="countdown" style="font-weight:bold;"></p>
+    
   </div>
 
   <div class="header-right">
@@ -174,11 +177,45 @@ tbody tr:hover{
   <div class="box">
     <h2>Weekly Summary</h2>
     <p>
-      It's race week! Welcome to the 2026 Formula 1 season. If you're new here, check out the
-      <a href="https://www.f1.cool/blog/338" target="_blank">Shift+F1 podcast Preseason Primer episode</a>.
+       Welcome to the 2026 Formula 1 season. If you're new to F1, check out the
+      <a href="https://www.f1.cool/blog/338" target="_blank">Shift+F1 podcast Preseason Primer episode</a>, which assumes no prior F1 knowledge, ahead of the first race this weekend.
     </p>
   </div>
 
+<div class="box">
+  <h2>F1 Fantasy Rules (Quick Guide)</h2>
+
+  <p>
+    Each player builds a fantasy team made up of <strong>5 drivers and 2 constructors</strong>
+    within a <strong>$100M budget</strong>. Your team scores points based on how those drivers
+    and teams perform during each race weekend.
+  </p>
+
+  <ul>
+    <li><strong>Scoring:</strong> Points come from qualifying, race finish, positions gained,
+    fastest lap, and other performance bonuses.</li>
+
+    <li><strong>DRS Boost:</strong> Each week you can apply a DRS Boost to one driver,
+    doubling their race points.</li>
+
+    <li><strong>Turbo Driver:</strong> Drivers under a certain price cap can receive a
+    Turbo boost for extra points.</li>
+
+    <li><strong>Transfers:</strong> You get free transfers each race week to change your
+    lineup. Extra transfers may cost points.</li>
+
+    <li><strong>Chips:</strong> Special chips (like Limitless or Wildcard) can be used
+    strategically during the season to maximize points.</li>
+
+    <li><strong>Deadline:</strong> Teams lock at the start of qualifying for each race weekend.</li>
+  </ul>
+
+  <p>
+    Full rules and scoring details can be found on the
+    <a href="https://fantasy.formula1.com/" target="_blank">official F1 Fantasy site</a>.
+  </p>
+</div>
+  
   <div class="box">
     <h2>League Standings</h2>
     <ol>
@@ -261,5 +298,30 @@ tbody tr:hover{
 
 </div>
 
+<script>
+
+const raceDate = new Date("March 3, 2026 23:59:59").getTime();
+
+const timer = setInterval(function(){
+
+const now = new Date().getTime();
+const distance = raceDate - now;
+
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+
+document.getElementById("countdown").innerHTML =
+"Race countdown: " + days + "d " + hours + "h " + minutes + "m";
+
+if(distance < 0){
+clearInterval(timer);
+document.getElementById("countdown").innerHTML = "Race Weekend!";
+}
+
+},1000);
+
+</script>
+  
 </body>
 </html>
