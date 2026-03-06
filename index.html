@@ -471,95 +471,46 @@ setInterval(updateSession,60000);
 </script>
 
 <script>
+async function updateLeagueStandings() {
 
-function updateLeagueCars(){
+  const list = document.getElementById("leagueStandings");
+  const teams = Array.from(list.querySelectorAll("li"));
 
-const teams = document.querySelectorAll("#leagueStandings li");
+  // Sort teams by points descending
+  const sortedTeams = [...teams].sort((a, b) => parseInt(b.dataset.points) - parseInt(a.dataset.points));
 
-let maxPoints = 0;
+  // Calculate leader points
+  const leaderPoints = parseInt(sortedTeams[0]?.dataset.points) || 0;
 
-teams.forEach(team=>{
-  const pts = parseInt(team.dataset.points);
-  if(pts > maxPoints){
-    maxPoints = pts;
-  }
-});
+  // Animate cars + update points/gap
+  sortedTeams.forEach((team, index) => {
 
-teams.forEach(team=>{
+    const pts = parseInt(team.dataset.points);
+    const car = team.querySelector(".car");
+    const pointsLabel = team.querySelector(".points");
+    const gap = leaderPoints - pts;
 
-  const pts = parseInt(team.dataset.points);
-  const car = team.querySelector(".car");
+    // Update points label
+    pointsLabel.textContent = gap === 0 ? `${pts} pts` : `${pts} pts (+${gap})`;
 
-  let percent = 0;
+    // Car position relative to leader
+    let percent = leaderPoints > 0 ? (pts / leaderPoints) * 92 : 0;
 
-  if(maxPoints > 0){
-    percent = (pts / maxPoints) * 100;
-  }
+    car.style.transition = "left 1.5s cubic-bezier(.4,1.4,.6,1)";
+    car.style.left = percent + "%";
+  });
 
-  car.style.left = percent + "%";
-
-});
-
+  // Animate leaderboard reordering smoothly
+  sortedTeams.forEach((team, index) => {
+    const currentIndex = Array.from(list.children).indexOf(team);
+    if (currentIndex !== index) {
+      // Move with a small delay for race effect
+      setTimeout(() => {
+        list.insertBefore(team, list.children[index]);
+      }, index * 200); // staggered animation
+    }
+  });
 }
-
-updateLeagueCars();
-
-</script>
-
-<script>
-
-function updateLeagueStandings(){
-
-const list = document.getElementById("leagueStandings");
-const teams = Array.from(list.querySelectorAll("li"));
-
-/* Sort teams by points */
-teams.sort((a,b)=>{
-return parseInt(b.dataset.points) - parseInt(a.dataset.points);
-});
-
-/* Animate leaderboard reordering */
-teams.forEach((team,index)=>{
-  setTimeout(()=>{
-    list.appendChild(team);
-  }, index * 120);
-});
-
-/* Find leader points */
-const leaderPoints = parseInt(teams[0].dataset.points);
-
-/* Move cars + show gap */
-teams.forEach(team=>{
-
-const pts = parseInt(team.dataset.points);
-const car = team.querySelector(".car");
-const pointsLabel = team.querySelector(".points");
-
-const gap = leaderPoints - pts;
-
-/* Update points label */
-if(gap === 0){
-pointsLabel.textContent = pts + " pts";
-}else{
-pointsLabel.textContent = pts + " pts (+" + gap + ")";
-}
-
-/* Car position relative to leader */
-let percent = 0;
-
-if(leaderPoints > 0){
-percent = (pts/leaderPoints) * 95;
-}
-
-/* Smooth animation */
-setTimeout(()=>{
-  car.style.left = percent + "%";
-},200);
-
-});
-
-}
-
 </script>
 
 <script>
