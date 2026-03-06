@@ -664,6 +664,105 @@ car.style.left = percent + "%";
 updateLeagueStandings();
 
 </script>
+
+<script>
+// === Helper: CSV to Array ===
+function CSVToArray(strData, strDelimiter = ",") {
+  const pattern = new RegExp(
+    `(\\${strDelimiter}|\\r?\\n|\\r|^)(?:"([^"]*(?:""[^"]*)*)"|([^"\\${strDelimiter}\\r\\n]*))`,
+    "gi"
+  );
+  const arrData = [[]];
+  let arrMatches = null;
+
+  while ((arrMatches = pattern.exec(strData))) {
+    const strMatchedDelimiter = arrMatches[1];
+    if (strMatchedDelimiter.length && strMatchedDelimiter !== strDelimiter) {
+      arrData.push([]);
+    }
+    const strMatchedValue = arrMatches[2]
+      ? arrMatches[2].replace(/""/g, '"')
+      : arrMatches[3];
+    arrData[arrData.length - 1].push(strMatchedValue);
+  }
+  return arrData.filter(r => r.length > 1);
+}
+
+// === Fetch CSV from Google Sheets ===
+async function fetchCSV(url) {
+  const response = await fetch(url);
+  const text = await response.text();
+  return CSVToArray(text);
+}
+
+// === Update League Standings ===
+async function updateLeague(url) {
+  const data = await fetchCSV(url);
+  const list = document.getElementById("leagueStandings");
+
+  list.querySelectorAll("li").forEach(li => {
+    const teamName = li.querySelector(".team-name").textContent;
+    const row = data.find(r => r[0] === teamName);
+    if (row) li.dataset.points = row[1];
+    li.querySelector(".points").textContent = row ? `${row[1]} pts` : "0 pts";
+  });
+
+  updateLeagueStandings();
+}
+
+// === Update Driver Table ===
+async function updateDriverTable(url) {
+  const data = await fetchCSV(url);
+  const tbody = document.querySelector("#driverTable tbody");
+  tbody.innerHTML = "";
+
+  data.forEach(row => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${row[0]}</td>
+      <td><span class="team-color" style="background:${row[4] || '#ccc'};"></span>${row[1]}</td>
+      <td>${row[2]}</td>
+      <td>${row[3]}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// === Update Constructor Table ===
+async function updateConstructorTable(url) {
+  const data = await fetchCSV(url);
+  const tbody = document.querySelector("#constructorTable tbody");
+  tbody.innerHTML = "";
+
+  data.forEach(row => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><span class="team-color" style="background:${row[2] || '#ccc'};"></span>${row[0]}</td>
+      <td>${row[1]}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// === Main Update Function with fixed URLs ===
+async function updateAllStandings() {
+  const leagueCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrV322pEAE3V-VWGBqsDP_PdOTB8XWJShItQel2-WcpQZPEWMlWz0gc1JFfQaGLyw_EaJO6848RVTv/pub?gid=0&single=true&output=csv";
+  const driverCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrV322pEAE3V-VWGBqsDP_PdOTB8XWJShItQel2-WcpQZPEWMlWz0gc1JFfQaGLyw_EaJO6848RVTv/pub?gid=1986347732&single=true&output=csv";
+  const constructorCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrV322pEAE3V-VWGBqsDP_PdOTB8XWJShItQel2-WcpQZPEWMlWz0gc1JFfQaGLyw_EaJO6848RVTv/pub?gid=886363941&single=true&output=csv";
+
+  await Promise.all([
+    updateLeague(leagueCSV),
+    updateDriverTable(driverCSV),
+    updateConstructorTable(constructorCSV)
+  ]);
+}
+
+// === Auto-update on page load and every 5 minutes ===
+window.addEventListener("load", () => {
+  updateAllStandings();
+  setInterval(updateAllStandings, 5 * 60 * 1000); // every 5 minutes
+});
+</script>
   
 </body>
 </html>
