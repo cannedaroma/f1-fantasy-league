@@ -134,6 +134,89 @@ tbody tr:hover{
     text-align: center;
   }
 }
+
+.league-list{
+  list-style:none;
+  padding:0;
+}
+
+.league-list li{
+  margin-bottom:10px;
+}
+
+.team-name{
+  font-weight:bold;
+}
+
+.points{
+  margin-left:6px;
+  color:#666;
+}
+
+.track{
+  position:relative;
+  height:18px;
+  background:#eee;
+  border-radius:10px;
+  margin-top:4px;
+}
+
+.car{
+  position:absolute;
+  left:0%;
+  top:-2px;
+  font-size:16px;
+  transition:left 0.6s ease;
+}
+
+  .league-list{
+list-style:none;
+padding:0;
+}
+
+.league-list li{
+margin-bottom:14px;
+}
+
+.team-name{
+font-weight:bold;
+}
+
+.points{
+margin-left:6px;
+color:#666;
+}
+
+.track{
+position:relative;
+height:20px;
+background:linear-gradient(90deg,#eee,#f7f7f7);
+border-radius:10px;
+margin-top:6px;
+}
+
+.grid{
+position:absolute;
+left:0;
+top:-2px;
+font-size:14px;
+}
+
+.finish{
+position:absolute;
+right:0;
+top:-2px;
+font-size:14px;
+}
+
+.car{
+position:absolute;
+left:0%;
+top:-2px;
+font-size:18px;
+transition:left 0.8s ease;
+}
+  
 </style>
 </head>
 
@@ -216,21 +299,122 @@ tbody tr:hover{
 </div>
   
   <div class="box">
-    <h2>League Standings</h2>
-    <ol>
-      <li>Bear Essentials – 0 pts</li>
-      <li>Delta Krass – 0 pts</li>
-      <li>Delta Love – 0 pts</li>
-      <li>Here I Go! – 0 pts</li>
-      <li>Hold on! – 0 pts</li>
-      <li>Fast Car Go Michael Team – 0 pts</li>
-      <li>Fast Cars w/ Good Drivers – 0 pts</li>
-      <li>KachowStickers24 – 0 pts</li>
-      <li>KatAttack-Fast & Furriest – 0 pts</li>
-      <li>The Maxtrix 5 – 0 pts</li>
-      <li>TowMater's Crew – 0 pts</li>
-    </ol>
-  </div>
+<h2>League Standings</h2>
+
+<ul id="leagueStandings" class="league-list">
+
+<li data-points="0">
+<span class="team-name">Bear Essentials</span>
+<span class="points">0 pts</span>
+<div class="track">
+<span class="grid">🚦</span>
+<span class="car">🏎️</span>
+<span class="finish">🏁</span>
+</div>
+</li>
+
+<li data-points="0">
+<span class="team-name">Delta Krass</span>
+<span class="points">0 pts</span>
+<div class="track">
+<span class="grid">🚦</span>
+<span class="car">🏎️</span>
+<span class="finish">🏁</span>
+</div>
+</li>
+
+<li data-points="0">
+<span class="team-name">Delta Love</span>
+<span class="points">0 pts</span>
+<div class="track">
+<span class="grid">🚦</span>
+<span class="car">🏎️</span>
+<span class="finish">🏁</span>
+</div>
+</li>
+
+<li data-points="0">
+<span class="team-name">Here I Go!</span>
+<span class="points">0 pts</span>
+<div class="track">
+<span class="grid">🚦</span>
+<span class="car">🏎️</span>
+<span class="finish">🏁</span>
+</div>
+</li>
+
+<li data-points="0">
+<span class="team-name">Hold on!</span>
+<span class="points">0 pts</span>
+<div class="track">
+<span class="grid">🚦</span>
+<span class="car">🏎️</span>
+<span class="finish">🏁</span>
+</div>
+</li>
+
+<li data-points="0">
+<span class="team-name">Fast Car Go Michael Team</span>
+<span class="points">0 pts</span>
+<div class="track">
+<span class="grid">🚦</span>
+<span class="car">🏎️</span>
+<span class="finish">🏁</span>
+</div>
+</li>
+
+<li data-points="0">
+<span class="team-name">Fast Cars w/ Good Drivers</span>
+<span class="points">0 pts</span>
+<div class="track">
+<span class="grid">🚦</span>
+<span class="car">🏎️</span>
+<span class="finish">🏁</span>
+</div>
+</li>
+
+<li data-points="0">
+<span class="team-name">KachowStickers24</span>
+<span class="points">0 pts</span>
+<div class="track">
+<span class="grid">🚦</span>
+<span class="car">🏎️</span>
+<span class="finish">🏁</span>
+</div>
+</li>
+
+<li data-points="0">
+<span class="team-name">KatAttack-Fast & Furriest</span>
+<span class="points">0 pts</span>
+<div class="track">
+<span class="grid">🚦</span>
+<span class="car">🏎️</span>
+<span class="finish">🏁</span>
+</div>
+</li>
+
+<li data-points="0">
+<span class="team-name">The Maxtrix 5</span>
+<span class="points">0 pts</span>
+<div class="track">
+<span class="grid">🚦</span>
+<span class="car">🏎️</span>
+<span class="finish">🏁</span>
+</div>
+</li>
+
+<li data-points="0">
+<span class="team-name">TowMater's Crew</span>
+<span class="points">0 pts</span>
+<div class="track">
+<span class="grid">🚦</span>
+<span class="car">🏎️</span>
+<span class="finish">🏁</span>
+</div>
+</li>
+
+</ul>
+</div>
 
   <div class="box">
     <h2>Driver Standings</h2>
@@ -351,6 +535,89 @@ document.getElementById("sessionStatus").innerHTML=status;
 }
 
 setInterval(updateSession,60000);
+
+</script>
+
+<script>
+
+function updateLeagueCars(){
+
+const teams = document.querySelectorAll("#leagueStandings li");
+
+let maxPoints = 0;
+
+teams.forEach(team=>{
+  const pts = parseInt(team.dataset.points);
+  if(pts > maxPoints){
+    maxPoints = pts;
+  }
+});
+
+teams.forEach(team=>{
+
+  const pts = parseInt(team.dataset.points);
+  const car = team.querySelector(".car");
+
+  let percent = 0;
+
+  if(maxPoints > 0){
+    percent = (pts / maxPoints) * 100;
+  }
+
+  car.style.left = percent + "%";
+
+});
+
+}
+
+updateLeagueCars();
+
+</script>
+
+<script>
+
+function updateLeagueStandings(){
+
+const list = document.getElementById("leagueStandings");
+const teams = Array.from(list.querySelectorAll("li"));
+
+/* Sort teams by points */
+teams.sort((a,b)=>{
+return parseInt(b.dataset.points) - parseInt(a.dataset.points);
+});
+
+/* Re-append sorted order */
+teams.forEach(team => list.appendChild(team));
+
+/* Find leader points */
+let maxPoints = 0;
+
+teams.forEach(team=>{
+const pts = parseInt(team.dataset.points);
+if(pts > maxPoints){
+maxPoints = pts;
+}
+});
+
+/* Move cars relative to leader */
+teams.forEach(team=>{
+
+const pts = parseInt(team.dataset.points);
+const car = team.querySelector(".car");
+
+let percent = 0;
+
+if(maxPoints > 0){
+percent = (pts/maxPoints) * 95;
+}
+
+car.style.left = percent + "%";
+
+});
+
+}
+
+updateLeagueStandings();
 
 </script>
   
