@@ -298,23 +298,24 @@ tbody tr:hover{
 
 <script>
 
-const raceDate = new Date("March 3, 2026 23:59:59").getTime();
+const raceStart = new Date("2026-03-08T04:00:00Z").getTime();
 
 const timer = setInterval(function(){
 
 const now = new Date().getTime();
-const distance = raceDate - now;
+const distance = raceStart - now;
 
 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
 const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+const seconds = Math.floor((distance % (1000*60))/1000);
 
 document.getElementById("countdown").innerHTML =
-"Race countdown: " + days + "d " + hours + "h " + minutes + "m";
+"Lights out in: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
 
 if(distance < 0){
 clearInterval(timer);
-document.getElementById("countdown").innerHTML = "Race Weekend!";
+document.getElementById("countdown").innerHTML = "🏁 Race in progress!";
 }
 
 },1000);
