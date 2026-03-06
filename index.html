@@ -158,6 +158,7 @@ tbody tr:hover{
       <h2>Next Race</h2>
       <p><strong>Australian Grand Prix – March 3–5</strong></p>
       <p id="countdown" style="font-weight:bold;"></p>
+      <p id="sessionStatus" style="font-weight:bold;color:#d00000;"></p>
     </div>
     
   </div>
@@ -319,6 +320,37 @@ document.getElementById("countdown").innerHTML = "🏁 Race in progress!";
 }
 
 },1000);
+
+</script>
+
+<script>
+
+function updateSession(){
+
+const now = new Date();
+
+const qualiStart = new Date("2026-03-07T05:00:00Z");
+const raceStart = new Date("2026-03-08T04:00:00Z");
+
+let status="";
+
+if(now < qualiStart){
+status="Race weekend coming soon";
+}
+
+else if(now >= qualiStart && now < raceStart){
+status="Qualifying completed — Race Day approaching";
+}
+
+else if(now >= raceStart){
+status="🏁 Race in progress or completed";
+}
+
+document.getElementById("sessionStatus").innerHTML=status;
+
+}
+
+setInterval(updateSession,60000);
 
 </script>
   
