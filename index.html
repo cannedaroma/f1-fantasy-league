@@ -345,119 +345,7 @@ font-size:0.9em;
   <div class="box">
 <h2>League Standings</h2>
 
-<ul id="leagueStandings" class="league-list">
-
-<li data-points="0">
-<span class="team-name">Bear Essentials</span>
-<span class="points">0 pts</span>
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-</li>
-
-<li data-points="0">
-<span class="team-name">Delta Krass</span>
-<span class="points">0 pts</span>
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-</li>
-
-<li data-points="0">
-<span class="team-name">Delta Love</span>
-<span class="points">0 pts</span>
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-</li>
-
-<li data-points="0">
-<span class="team-name">Here I Go!</span>
-<span class="points">0 pts</span>
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-</li>
-
-<li data-points="0">
-<span class="team-name">Hold on!</span>
-<span class="points">0 pts</span>
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-</li>
-
-<li data-points="0">
-<span class="team-name">Fast Car Go Michael Team</span>
-<span class="points">0 pts</span>
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-</li>
-
-<li data-points="0">
-<span class="team-name">Fast Cars w/ Good Drivers</span>
-<span class="points">0 pts</span>
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-</li>
-
-<li data-points="0">
-<span class="team-name">KachowStickers24</span>
-<span class="points">0 pts</span>
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-</li>
-
-<li data-points="0">
-<span class="team-name">KatAttack-Fast & Furriest</span>
-<span class="points">0 pts</span>
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-</li>
-
-<li data-points="0">
-<span class="team-name">The Maxtrix 5</span>
-<span class="points">0 pts</span>
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-</li>
-
-<li data-points="0">
-<span class="team-name">TowMater's Crew</span>
-<span class="points">0 pts</span>
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-</li>
-
-</ul>
+<ul id="leagueStandings" class="league-list"></ul>
 </div>
 
   <div class="box">
@@ -637,17 +525,20 @@ teams.forEach(team => list.appendChild(team));
 let maxPoints = 0;
 
 teams.forEach(team=>{
-const pts = parseInt(team.dataset.points);
-if(pts > maxPoints){
-maxPoints = pts;
-}
-});
-
-/* Move cars relative to leader */
-teams.forEach(team=>{
 
 const pts = parseInt(team.dataset.points);
 const car = team.querySelector(".car");
+
+const leaderPoints = parseInt(teams[0].dataset.points);
+const gap = leaderPoints - pts;
+
+const pointsLabel = team.querySelector(".points");
+
+if(gap === 0){
+pointsLabel.textContent = pts + " pts";
+}else{
+pointsLabel.textContent = pts + " pts (+" + gap + ")";
+}
 
 let percent = 0;
 
@@ -697,14 +588,32 @@ async function fetchCSV(url) {
 
 // === Update League Standings ===
 async function updateLeague(url) {
+
   const data = await fetchCSV(url);
   const list = document.getElementById("leagueStandings");
 
-  list.querySelectorAll("li").forEach(li => {
-    const teamName = li.querySelector(".team-name").textContent;
-    const row = data.find(r => r[0] === teamName);
-    if (row) li.dataset.points = row[1];
-    li.querySelector(".points").textContent = row ? `${row[1]} pts` : "0 pts";
+  list.innerHTML = "";
+
+  data.forEach((row,index) => {
+
+    const teamName = row[0];
+    const points = parseInt(row[1]) || 0;
+
+    const li = document.createElement("li");
+    li.dataset.points = points;
+
+    li.innerHTML = `
+      <span class="team-name">${teamName}</span>
+      <span class="points">${points} pts</span>
+      <div class="track">
+        <span class="grid">🚦</span>
+        <span class="car">🏎️</span>
+        <span class="finish">🏁</span>
+      </div>
+    `;
+
+    list.appendChild(li);
+
   });
 
   updateLeagueStandings();
