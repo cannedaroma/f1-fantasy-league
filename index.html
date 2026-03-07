@@ -551,8 +551,10 @@ const list = document.getElementById("leagueStandings");
 
 list.innerHTML = "";
 
-// Remove header row
-data.shift();
+// Remove header row only if it exists
+if (data[0][0].toLowerCase().includes("team")) {
+  data.shift();
+}
 
   // Sort by points descending BEFORE building the list
 data.sort((a, b) => parseInt(b[1]) - parseInt(a[1]));
