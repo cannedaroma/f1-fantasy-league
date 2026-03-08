@@ -283,19 +283,13 @@ font-size:0.9em;
 
     <div class="next-race">
       <h2>Next Race</h2>
-      <p><strong>Australian Grand Prix – March 3–5</strong></p>
+      <p><strong>Chinese Grand Prix – March 13–15</strong></p>
       <p id="sessionStatus" style="font-weight:bold;color:#d00000;"></p>
       <p id="countdown" style="font-weight:bold;"></p>
     </div>
     
   </div>
 
-  <div class="header-right">
-    <img src="melbourne-2026.jpeg" alt="Melbourne 2026 GP Poster">
-    <p class="poster-credit">
-      Poster credit: © BWT Alpine F1 Team – 2026 Australian GP artwork
-    </p>
-  </div>
 </header>
 
 <div class="main-grid">
@@ -303,8 +297,7 @@ font-size:0.9em;
   <div class="box">
     <h2>Weekly Summary</h2>
     <p>
-       Welcome to the 2026 Formula 1 season. If you're new to F1, check out the
-      <a href="https://www.f1.cool/blog/338" target="_blank">Shift+F1 podcast Preseason Primer episode</a>, which assumes no prior F1 knowledge, ahead of the first race this weekend.
+       The first race of the year is over and what a wild ride! The new regulations made for an exciting start to the season with technical and driver-management issues leading to multiple crashes and retirements over the course of the weekend. The qualifying order was shuffled quite a bit during the race, and although Max Verstappen started 20th of 22 cars on the grid, all of his overtaking during the race rewarded fantasy teams who featured him! Congrats to Fast Cars w/ Good Drivers for taking the first RACE WIN of 2026!
     </p>
   </div>
 
@@ -415,7 +408,7 @@ font-size:0.9em;
 
 <script>
 
-const raceStart = new Date("2026-03-08T04:00:00Z").getTime();
+const raceStart = new Date("2026-03-15T07:00:00Z").getTime();
 
 const timer = setInterval(function(){
 
@@ -445,8 +438,8 @@ function updateSession(){
 
 const now = new Date();
 
-const qualiStart = new Date("2026-03-07T05:00:00Z");
-const raceStart = new Date("2026-03-08T04:00:00Z");
+const qualiStart = new Date("2026-03-14T07:00:00Z");
+const raceStart = new Date("2026-03-15T07:00:00Z");
 
 let status="";
 
