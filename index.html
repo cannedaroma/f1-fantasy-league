@@ -307,6 +307,9 @@ Full rules and scoring details on the
 
 <script>
 
+  // -------------------- TRACK PREVIOUS POSITIONS --------------------
+let previousPositions = new Map();
+  
 /* -------------------- RACE TIMES -------------------- */
 
 const qualiStart=new Date("2026-03-14T07:00:00Z");
@@ -337,16 +340,14 @@ document.getElementById("countdown").textContent=
 /* -------------------- SESSION STATUS -------------------- */
 
 function updateSession(){
+  const now = new Date();
 
-const now=new Date();
+  let status =
+    now < qualiStart ? "Race weekend not started" :   // BEFORE weekend
+    now >= qualiStart && now < raceStart ? "Qualifying in progress" :  // QUALI day
+    now >= raceStart ? "🏁 Race in progress or completed" : "";
 
-let status=
-now<qualiStart ? "Race weekend in progress" :
-now<raceStart ? "Qualifying completed" :
-"🏁 Race in progress or completed";
-
-document.getElementById("sessionStatus").textContent=status;
-
+  document.getElementById("sessionStatus").textContent = status;
 }
 
 /* -------------------- CSV FETCH -------------------- */
@@ -362,40 +363,42 @@ return txt.trim().split("\n").map(r=>r.split(","));
 
 /* -------------------- LEAGUE -------------------- */
 
-async function updateLeague(url){
+async function updateLeague(url) {
+  const data = await fetchCSV(url);
+  const list = document.getElementById("leagueStandings");
+  list.innerHTML = "";
 
-const data=await fetchCSV(url);
-const list=document.getElementById("leagueStandings");
+  if (data[0][0].toLowerCase().includes("team")) data.shift();
 
-list.innerHTML="";
+  // Sort by points descending
+  data.sort((a, b) => b[1] - a[1]);
 
-if(data[0][0].toLowerCase().includes("team")) data.shift();
+  data.forEach(([name, pts], index) => {
+    const li = document.createElement("li");
 
-data.sort((a,b)=>b[1]-a[1]);
+    // Determine arrow direction
+    const prevIndex = previousPositions.get(name);
+    let arrow = "⏺"; // default: no change
+    if (prevIndex !== undefined) {
+      if (index < prevIndex) arrow = "⬆"; // moved up
+      else if (index > prevIndex) arrow = "⬇"; // moved down
+    }
 
-const leader=parseInt(data[0][1])||0;
+    li.innerHTML = `
+      <span class="team-name">${name} ${arrow}</span>
+      <span class="points">${pts} pts</span>
+      <div class="track">
+        <span class="grid">🚦</span>
+        <span class="car" style="left:${data[0][1] ? (pts/data[0][1])*92 : 0}%">🏎️</span>
+        <span class="finish">🏁</span>
+      </div>
+    `;
 
-data.forEach(([name,pts])=>{
+    list.appendChild(li);
 
-const gap=leader-pts;
-
-const li=document.createElement("li");
-
-li.innerHTML=`
-<span class="team-name">${name}</span>
-<span class="points">${gap?`${pts} pts (+${gap})`:`${pts} pts`}</span>
-
-<div class="track">
-<span class="grid">🚦</span>
-<span class="car" style="left:${leader?pts/leader*92:0}%">🏎️</span>
-<span class="finish">🏁</span>
-</div>
-`;
-
-list.appendChild(li);
-
-});
-
+    // Update position for next comparison
+    previousPositions.set(name, index);
+  });
 }
 
 /* -------------------- DRIVER TABLE -------------------- */
