@@ -337,19 +337,6 @@ document.getElementById("countdown").textContent=
 
 }
 
-/* -------------------- SESSION STATUS -------------------- */
-
-function updateSession(){
-  const now = new Date();
-
-  let status =
-    now < qualiStart ? "Race weekend not started" :   // BEFORE weekend
-    now >= qualiStart && now < raceStart ? "Qualifying in progress" :  // QUALI day
-    now >= raceStart ? "🏁 Race in progress or completed" : "";
-
-  document.getElementById("sessionStatus").textContent = status;
-}
-
 /* -------------------- CSV FETCH -------------------- */
 
 async function fetchCSV(url){
@@ -472,11 +459,9 @@ updateConstructors(`${base}&gid=886363941`)
 window.addEventListener("load",()=>{
 
 updateAll();
-updateSession();
 updateCountdown();
 
 setInterval(updateAll,300000);
-setInterval(updateSession,60000);
 setInterval(updateCountdown,1000);
 
 });
