@@ -378,11 +378,11 @@ async function updateLeague(url) {
 
     // Determine arrow direction
     const prevIndex = previousPositions.get(name);
-    let arrow = "⏺"; // default: no change
-    if (prevIndex !== undefined) {
-      if (index < prevIndex) arrow = "⬆"; // moved up
-      else if (index > prevIndex) arrow = "⬇"; // moved down
-    }
+  let arrow = "–"; // default: no change
+if (prevIndex !== undefined) {
+  if (index < prevIndex) arrow = "▲"; // moved up
+  else if (index > prevIndex) arrow = "▼"; // moved down
+}
 
     li.innerHTML = `
       <span class="team-name">${name} ${arrow}</span>
