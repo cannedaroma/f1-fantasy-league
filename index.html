@@ -281,6 +281,7 @@ Full rules and scoring details on the
 
 <thead>
 <tr>
+<th>#</th>
 <th>Team</th>
 <th>Pts</th>
 </tr>
@@ -425,10 +426,11 @@ tbody.innerHTML="";
 
 data.sort((a,b)=>b[1]-a[1]);
 
-data.forEach(r=>{
+data.forEach((r,index)=>{
 
 tbody.innerHTML+=`
 <tr>
+<td>${index+1}</td>
 <td><span class="team-color" style="background:${r[2]||'#ccc'}"></span>${r[0]}</td>
 <td>${r[1]}</td>
 </tr>
