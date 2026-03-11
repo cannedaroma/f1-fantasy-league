@@ -424,6 +424,9 @@ const tbody=document.querySelector("#constructorTable tbody");
 
 tbody.innerHTML="";
 
+// Remove header row if present
+if (data[0][0].toLowerCase().includes("team")) data.shift();
+
 data.sort((a,b)=>b[1]-a[1]);
 
 data.forEach((r,index)=>{
