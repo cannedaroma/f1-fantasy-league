@@ -164,6 +164,15 @@ text-align:center;
 .track{height:16px}
 
 }
+
+#teamStats ul {
+  margin: 6px 0 0 20px;
+  padding: 0;
+}
+
+#teamStats li {
+  margin-bottom: 4px;
+}
   
 </style>
 </head>
@@ -260,9 +269,10 @@ Full rules and scoring details on the
 
 </div>
 
-<div class="winner-banner">
-  🏆 Last Race Winner: <span id="raceWinner">Loading...</span>
-  <div id="teamStats" style="margin-top:8px; font-weight:normal; font-size:.95em;"></div>
+<div class="box" id="lastRaceBox">
+  <h2>Last Race Winner & Season Results</h2>
+  <p>🏆 Winner: <span id="raceWinner">Loading...</span></p>
+  <div id="teamStats">Loading team stats...</div>
 </div>
 
 <div class="box">
