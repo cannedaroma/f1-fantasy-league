@@ -468,8 +468,9 @@ let previousPositions = new Map();
   
 /* -------------------- RACE TIMES -------------------- */
 
-const qualiStart = new Date(Date.UTC(2026, 2, 14, 7, 0, 0)); // year, month-1, day, hour, min, sec
-const raceStart = new Date("2026-03-15T07:00:00Z");
+// Team lock in GMT-5 (Eastern Standard Time)
+const qualiStart = new Date("2026-03-14T07:00:00-05:00"); // YYYY-MM-DDTHH:MM:SS±HH:MM
+const raceStart = new Date("2026-03-15T07:00:00-05:00");
 
 // Approximate session durations
 const qualiEnd = new Date(qualiStart.getTime() + (60*60*1000)); // +1 hour
@@ -477,23 +478,23 @@ const raceEnd = new Date(raceStart.getTime() + (2*60*60*1000)); // +2 hours
 
 /* -------------------- COUNTDOWN -------------------- */
 
-function updateCountdown(){
+function updateCountdown() {
 
   const now = new Date();
   const status = document.getElementById("sessionStatus");
   const countdown = document.getElementById("countdown");
 
   function formatCountdown(diff){
-    const d = Math.floor(diff/86400000);
-    const h = Math.floor((diff%86400000)/3600000);
-    const m = Math.floor((diff%3600000)/60000);
-    const s = Math.floor((diff%60000)/1000);
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
     return `${d}d ${h}h ${m}m ${s}s`;
   }
 
   // BEFORE QUALIFYING (team lock countdown)
   if(now < qualiStart){
-    const diff = qualiStart - now; // ✅ just difference in milliseconds
+    const diff = qualiStart - now; 
     status.textContent = "🔒 Fantasy teams lock at qualifying!";
     countdown.textContent = `Teams lock in: ${formatCountdown(diff)}`;
   }
