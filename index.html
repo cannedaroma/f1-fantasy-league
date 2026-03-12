@@ -173,6 +173,20 @@ text-align:center;
 #teamStats li {
   margin-bottom: 4px;
 }
+
+/* ---------- HEADER IMAGE PHOTO & CREDIT ---------- */
+.header-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-credit {
+  font-size: 0.75em;
+  color: #777;
+  margin-top: 6px;
+  text-align: center;
+}
   
 </style>
 </head>
@@ -210,8 +224,10 @@ Join the League
 </div>
 
 <div class="header-image">
-<img src="https://raw.githubusercontent.com/scuderiabroncos/f1-fantasy-league/refs/heads/main/china-2026.jpeg" alt="Ferrari Formula 1 car">
-<p class="image-credit">Image © Scuderia Ferrari</p>
+  <div class="header-photo">
+    <img src="https://raw.githubusercontent.com/scuderiabroncos/f1-fantasy-league/refs/heads/main/china-2026.jpeg" alt="F1 car">
+    <p class="image-credit">Image © Scuderia Ferrari</p>
+  </div>
 </div>
   
 </header>
