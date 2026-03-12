@@ -252,10 +252,6 @@ Full rules and scoring details on the
 
 </div>
 
-<div class="winner-banner">
-🏆 Last Race Winner: <span id="raceWinner">Loading...</span>
-</div> 
-
 <div class="box">
   
 <h2>League Standings</h2>
@@ -264,6 +260,10 @@ Full rules and scoring details on the
 
 </div>
 
+<div class="winner-banner">
+  🏆 Last Race Winner: <span id="raceWinner">Loading...</span>
+  <div id="teamStats" style="margin-top:8px; font-weight:normal; font-size:.95em;"></div>
+</div>
 
 <div class="box">
 
@@ -434,17 +434,29 @@ if (prevIndex !== undefined) {
 
 async function updateWinner(url){
 
-const data = await fetchCSV(url);
+  const data = await fetchCSV(url);
 
-if (data[0][0].toLowerCase().includes("team")) data.shift();
+  if (data.length && data[0][0].toLowerCase().includes("team")) data.shift();
 
-// sort by points descending
-data.sort((a,b)=>b[1]-a[1]);
+  // Sort by points descending
+  data.sort((a,b)=>b[1]-a[1]);
 
-const winner = data[0][0];
+  // Last race winner = team with most points this race (first row)
+  const winner = data[0][0];
+  document.getElementById("raceWinner").textContent = winner;
 
-document.getElementById("raceWinner").textContent = winner;
+  // Build team stats display
+  // Assuming column indexes: 0=Team Name, 2=Race Wins, 3=Podiums
+  let statsHtml = "<ul style='padding-left:20px; margin:4px 0;'>";
+  data.forEach(row => {
+    const name = row[0];
+    const wins = row[2] || 0;
+    const podiums = row[3] || 0;
+    statsHtml += `<li>${name}: 🏆 ${wins} wins, 🥉 ${podiums} podiums</li>`;
+  });
+  statsHtml += "</ul>";
 
+  document.getElementById("teamStats").innerHTML = statsHtml;
 }
   
 /* -------------------- DRIVER TABLE -------------------- */
