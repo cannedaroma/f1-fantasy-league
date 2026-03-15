@@ -286,6 +286,30 @@ padding:0;
 #summaryStats li{
 margin-bottom:4px;
 }
+
+/* ---------- SEASON RESULTS ---------- */
+
+.race-winner{
+font-size:1.1em;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.results-divider{
+border:none;
+border-top:1px solid #eee;
+margin:12px 0;
+}
+
+#summaryStats{
+background:#fafafa;
+padding:10px 12px;
+border-radius:6px;
+}
+
+#teamStats{
+margin-top:6px;
+}
   
 </style>
 </head>
@@ -370,10 +394,21 @@ Full rules and scoring details on the
 </div>
   
 <div class="box" id="lastRaceBox">
-  <h2>Season Results</h2>
-  <p>🏆 Chinese GP Winner: <span id="raceWinner">Loading...</span></p>
-  <div id="summaryStats"></div>
-  <div id="teamStats">Loading team stats...</div>
+
+<h2>Season Results</h2>
+
+<div class="race-winner">
+🏆 Chinese GP Winner: <strong><span id="raceWinner">Loading...</span></strong>
+</div>
+
+<hr class="results-divider">
+
+<div id="summaryStats"></div>
+
+<hr class="results-divider">
+
+<div id="teamStats">Loading team stats...</div>
+
 </div>
 
 <div class="box">
