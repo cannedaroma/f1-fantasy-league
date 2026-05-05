@@ -301,6 +301,22 @@ border-radius:6px;
 #teamStats{
 margin-top:6px;
 }
+
+.last-race {
+  margin-top: 15px;
+  background: #fff;
+  border-left: 6px solid #555;
+  padding: 14px 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  max-width: 320px;
+}
+
+.last-race h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.1em;
+}
   
 </style>
 </head>
@@ -332,7 +348,30 @@ Join the League
 <p id="sessionStatus" style="font-weight:bold;color:#d00000"></p>
 
 </div>
+  
+<div class="box" id="lastRaceBox">
 
+  <h2>Last Race</h2>
+  
+<div id="summaryStats"></div>
+  
+  <div>🏆 Miami GP Winner: <strong>Fast Car Go Michael Team (287 pts) </strong>
+  </div>
+
+  <hr class="results-divider">
+
+  <div>
+    <ul>
+      <li>🥈 Runner-up: TowMater's Crew (277 pts)</li>
+      <li>🥉 Third: KachowStickers24 (232 pts)</li>
+    </ul>
+  </div>
+
+  <hr class="results-divider">
+
+ <div id="teamStats"></div>
+
+</div>
 </div>
 
 <div class="header-image">
@@ -382,29 +421,6 @@ Full rules and scoring details on the
 
 </div>
   
-<div class="box" id="lastRaceBox">
-
-  <h2>Last Race</h2>
-  
-<div id="summaryStats"></div>
-  
-  <div>🏆 Miami GP Winner: <strong>Fast Car Go Michael Team (287 pts) </strong>
-  </div>
-
-  <hr class="results-divider">
-
-  <div>
-    <ul>
-      <li>🥈 Runner-up: TowMater's Crew (277 pts)</li>
-      <li>🥉 Third: KachowStickers24 (232 pts)</li>
-    </ul>
-  </div>
-
-  <hr class="results-divider">
-
- <div id="teamStats"></div>
-
-</div>
 <div class="box">
   <h2>Driver Standings</h2>
 
