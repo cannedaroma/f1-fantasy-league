@@ -188,11 +188,6 @@ text-align:center;
   text-align: center;
 }
 
-.next-race{
-margin-top:25px;
-line-height:1.4;
-}
-
 .site-header{
 align-items:center;
 }
@@ -301,21 +296,46 @@ border-radius:6px;
 #teamStats{
 margin-top:6px;
 }
-
-.last-race {
-  margin-top: 15px;
-  background: #fff;
-  border-left: 6px solid #555;
-  padding: 14px 18px;
+  
+.race-card {
+  background: #fff8f0;
+  border-left: 6px solid #d00000;
+  padding: 16px 20px;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   max-width: 320px;
+  line-height: 1.4;
+  margin-top: 15px;
 }
 
-.last-race h2 {
+.race-card h2 {
   margin-top: 0;
-  margin-bottom: 8px;
-  font-size: 1.1em;
+  margin-bottom: 10px;
+  font-size: 1.15em;
+  color: #d00000;
+}  
+
+.last-race {
+  border-left-color: #f39c12; /* warm podium tone instead of red */
+}
+
+/* Highlight podium lines */
+.last-race ul li:nth-child(1) {
+  color: #c0a000; /* gold-ish */
+  font-weight: bold;
+}
+
+.last-race ul li:nth-child(2) {
+  color: #888; /* silver */
+}
+
+.last-race ul li:nth-child(3) {
+  color: #cd7f32; /* bronze */
+}
+
+/* Winner line pop */
+.last-race strong {
+  color: #000;
 }
   
 </style>
@@ -339,24 +359,18 @@ target="_blank">
 Join the League
 </a>
 
-<div class="next-race">
-
-<h2>Next Race</h2>
-
-<p><strong>Canadian Grand Prix, May 22-24</strong></p>
-
-<p id="sessionStatus" style="font-weight:bold;color:#d00000"></p>
-
+div class="race-card next-race">
+  <h2>Next Race</h2>
+  <p><strong>Canadian Grand Prix, May 22-24</strong></p>
+  <p id="sessionStatus"></p>
 </div>
-  
-<div class="box" id="lastRaceBox">
 
+<div class="race-card last-race">
   <h2>Last Race</h2>
-  
-<div id="summaryStats"></div>
-  
-  <div>🏆 Miami GP Winner: <strong>Fast Car Go Michael Team (287 pts) </strong>
-  </div>
+
+  <div id="summaryStats"></div>
+
+  <div>🏆 Miami GP Winner: <strong>Fast Car Go Michael Team (287 pts)</strong></div>
 
   <hr class="results-divider">
 
@@ -369,8 +383,7 @@ Join the League
 
   <hr class="results-divider">
 
- <div id="teamStats"></div>
-
+  <div id="teamStats"></div>
 </div>
 </div>
 
