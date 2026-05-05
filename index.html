@@ -310,25 +310,13 @@ margin-top:6px;
   border-left-color: #f39c12; /* warm podium tone instead of red */
 }
 
-/* Highlight podium lines */
-.last-race ul li:nth-child(1) {
-  color: #c0a000; /* gold-ish */
-  font-weight: bold;
-}
-
-.last-race ul li:nth-child(2) {
-  color: #888; /* silver */
-}
-
-.last-race ul li:nth-child(3) {
-  color: #cd7f32; /* bronze */
-}
-
 /* Winner line pop */
 .last-race strong {
   color: #000;
 }
   
+  .last-race .silver { color: #888; }
+.last-race .bronze { color: #cd7f32; }
 </style>
 </head>
 
@@ -367,9 +355,9 @@ Join the League
 
   <div>
     <ul>
-      <li>🥈 Runner-up: TowMater's Crew (277 pts)</li>
-      <li>🥉 Third: KachowStickers24 (232 pts)</li>
-    </ul>
+  <li class="silver">🥈 Runner-up: TowMater's Crew (277 pts)</li>
+  <li class="bronze">🥉 Third: KachowStickers24 (232 pts)</li>
+</ul>
   </div>
 
   <hr class="results-divider">
